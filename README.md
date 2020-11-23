@@ -3,11 +3,19 @@ Linux Bockdevice library for Node.js
 
 ## API
 
-### `blockdev.findAll()` => Promise(`Array(BlockDevice)`)
+### `blockdev.findAll(options)` => Promise(`Array(BlockDevice)`)
+List all block devices
+- `options.probe` probe devices for PARTUUID and PTUUID
 
 ### `blockdev.findByName(options)` => Promise(`BlockDevice`)
+Find information about block device
+- `options.deviceName` device name, e.g. loop0
+- `options.probe` probe device for PARTUUID and PTUUID
 
 ### `blockdev.findByDevicePath(options)` => Promise(`BlockDevice`)
+Find information about block device
+- `options.devicePath` device path, e.g. /dev/loop0
+- `options.probe` probe device for PARTUUID and PTUUID
 
 ### `BlockDevice`
 
@@ -25,6 +33,9 @@ Major device number
 
 #### `BlockDevice.deviceNode.minor`
 Minor device number
+
+#### `BlockDevice.PTUUID` => String
+Partition table UUID, if probed and available
 
 #### `BlockDevice.open(params)` => Promise(`FileHandle`)
 
@@ -44,6 +55,10 @@ Start offset of partition inside block device in bytes
 
 #### `Partition.partition` => Number
 Partition number
+
+#### `Partition.PARTUUID` => String
+Partition UUID, if probed and available
+
 
 ## Minimal example
 
