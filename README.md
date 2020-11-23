@@ -30,6 +30,9 @@ Minor device number
 
 - `params.flags` open flags, can be either `"r"`, `"w"` or `"r+"`
 
+#### `BlockDevice.probe()` => Promies(`ProbeData`)
+Probe block device for UUID and PARTUUID
+
 #### `BlockDevice.partitions` => Array(`Partition`)
 
 ### `Partition`
@@ -44,6 +47,14 @@ Start offset of partition inside block device in bytes
 
 #### `Partition.partition` => Number
 Partition number
+
+### `ProbeData`
+
+#### `ProbeData.UUID` => String
+If present, probed UUID of file system
+
+#### `ProbeData.PARTUUID` => String
+If present, probed PARTUUID of partition
 
 ## Minimal example
 
